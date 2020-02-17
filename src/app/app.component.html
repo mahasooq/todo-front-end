@@ -1,15 +1,16 @@
 <div class="container">
-  <h1>todos</h1>
-  <form>
-    <p>
-        <input type="text" name="title" id="newtodo" placeholder="What needs to be done?" />
-        <input type="submit" style="visibility: hidden;" />
-    </p>
-  </form>
-  <ng-container *ngIf="todoList?.length > 0">
-      <ul>
-        <li *ngFor="let todo of todoList"><input type="checkbox" name="todo._id" id="todo._id"
-            [checked]="todo.completed">{{todo.title}}<button>X</button></li>
+  <div class="todos">
+    <h1>todos</h1>
+    <form #todoForm="ngForm" (ngSubmit)="onSubmit(todoForm)">
+      <input type="text" name="title" id="newtodo" placeholder="What needs to be done?" ngModel />
+      <input type="submit" style="visibility: hidden;" />
+    </form>
+    <ng-container *ngIf="todoList?.length > 0">
+      <ul class="todo-list">
+        <li *ngFor="let todo of todoList" class="todo-view"><input type="checkbox" name="todo._id" [id]="todo._id"
+            [checked]="todo.completed"><label [for]="todo._id" class="custom-checkbox"></label><span class="todo-title">{{todo.title}}</span><button type="button" class="btn btn-outline-danger">X</button>
+        </li>
       </ul>
     </ng-container>
+  </div>
 </div>
