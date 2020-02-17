@@ -34,4 +34,29 @@ export class AppComponent {
       this.getTodos();
     })
   }
+  setStatus(todo: Todo, event: any){
+    let field = {
+      completed: event.target.checked
+    }
+
+    this.repository.update(`todo/${todo._id}`, field)
+    .subscribe(res => {
+      this.getTodos();
+    })
+  }
+  deleteTodo(todo: Todo) {    
+    this.repository.delete(`todo/${todo._id}`)
+    .subscribe(res => {
+      this.getTodos();
+    })
+  }
+  updateTodo(todo: Todo, event: any) { 
+    let field = {
+      title: event.target.value
+    }
+    this.repository.update(`todo/${todo._id}`, field)
+    .subscribe(res => {
+      this.getTodos();
+    })
+  }
 }
