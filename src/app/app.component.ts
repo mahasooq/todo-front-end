@@ -24,8 +24,7 @@ export class AppComponent {
   getTodos() {
     this.repository.getData('todo')
     .subscribe(res => {
-      let response: any = res;
-      this.todoList = response.data as Todo[];
+      this.todoList = res as Todo[];
     })
   }
   createTodo(todo: TodoForCreation) {

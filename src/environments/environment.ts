@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  urlAddress: 'http://localhost:8080'
+  urlAddress: 'https://glacial-hamlet-73986.herokuapp.com'
 };
 
 /*
