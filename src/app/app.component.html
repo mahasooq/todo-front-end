@@ -1,18 +1,6 @@
-<div class="container">
-  <div class="todos">
-    <h1>todos</h1>
-    <form #todoForm="ngForm" (ngSubmit)="onSubmit(todoForm)">
-      <input type="text" name="title" id="newtodo" placeholder="What needs to be done?" ngModel />
-      <input type="submit" style="visibility: hidden;" />
-    </form>
-    <ng-container *ngIf="todoList?.length > 0">
-      <ul class="todo-list">
-        <li *ngFor="let todo of todoList" class="todo-view">
-          <input type="checkbox" name="todo._id" [id]="todo._id" (change)="setStatus(todo, $event)" [checked]="todo.completed"><label [for]="todo._id" class="custom-checkbox"></label>
-          <input type="text" name="update-todo" value="{{todo.title}}" (keyup.enter)="updateTodo(todo, $event)">
-          <button type="button" class="btn btn-outline-danger" (click)="deleteTodo(todo)">X</button>
-        </li>
-      </ul>
-    </ng-container>
+<div *ngIf="isLoading" class="loader vh-100 vw-100 d-flex justify-content-center align-items-center bg-white position-absolute">
+  <div class="spinner-border" role="status">
+    <span class="sr-only">Loading...</span>
   </div>
 </div>
+<router-outlet></router-outlet>
