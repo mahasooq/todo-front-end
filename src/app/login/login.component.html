@@ -1,0 +1,20 @@
+<div class="container d-flex align-items-center vh-100">
+  <div class="d-flex w-100 justify-content-center" [formGroup]="loginGroup">
+    <div class="w-50">
+      <input formControlName="email" type="email" (keyup.enter)="login()" placeholder="Email"
+        class="form-control mb-3" />
+      <input formControlName="password" type="password" (keyup.enter)="login()" placeholder="Password"
+        class="form-control mb-3" />
+      <div *ngIf="loginGroup.touched && loginGroup.invalid">
+        <ng-container *ngIf="this.loginGroup.get('email').invalid && this.loginGroup.get('email').touched">
+          <p *ngIf="this.loginGroup.get('email').errors.email" class="text-danger m-0 mb-1">Please type a valid email</p>
+          <p *ngIf="this.loginGroup.get('email').errors.required" class="text-danger m-0 mb-1">Email is required</p>
+        </ng-container>
+        <p *ngIf="this.loginGroup.get('password').invalid && this.loginGroup.get('password').touched" class="text-danger m-0 mb-1">Password is required</p>
+      </div>
+      <pre></pre>
+      <button class="btn btn-dark w-100" (click)="login()">Login</button>
+      <!-- <input type="text" class="form-control"/> -->
+    </div>
+  </div>
+</div>
